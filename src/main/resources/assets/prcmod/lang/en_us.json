@@ -1,0 +1,22 @@
+{
+  "block.prcmod.heap_of_goo": "Heap of Goo",
+  "block.prcmod.goo_ore": "Goo Ore",
+
+  "item.prcmod.unrefined_goo": "Unrefined Goo",
+  "item.prcmod.goopy_apple": "Goopy Apple",
+  "item.prcmod.goo_ingot": "Goo Ingot",
+  "item.prcmod.normal_pills": "Normal Pills",
+
+  "item.prcmod.goo_shovel": "Goo Shovel",
+  "item.prcmod.goo_sword": "Goo Sword",
+  "item.prcmod.goo_pickaxe": "Goo Pickaxe",
+  "item.prcmod.goo_axe": "Goo Axe",
+  "item.prcmod.goo_hoe": "Goo Hoe",
+
+  "item.prcmod.goo_helmet": "Goo Helmet",
+  "item.prcmod.goo_chestplate": "Goo Chestplate",
+  "item.prcmod.goo_leggings": "Goo Leggings",
+  "item.prcmod.goo_boots": "Goo Boots",
+
+  "itemGroup.gooTab": "Goo!"
+}

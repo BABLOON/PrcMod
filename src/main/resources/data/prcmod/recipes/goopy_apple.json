@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "xxx",
+    "xgx",
+    "xxx"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "prcmod:goo_ingot"
+    },
+    "g":
+    {
+      "item": "minecraft:apple"
+    }
+  },
+  "result":
+  {
+    "item": "prcmod:goopy_apple"
+  }
+}

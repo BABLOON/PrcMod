@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "xxx",
+    " g ",
+    " g "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "prcmod:goo_ingot"
+    },
+    "g":
+    {
+      "item": "minecraft:stick"
+    }
+  },
+  "result":
+  {
+    "item": "prcmod:goo_pickaxe"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "",
+  "ingredients":
+  [
+    {"item": "prcmod:heap_of_goo"}
+  ],
+  "result":
+  {
+    "item": "prcmod:goo_ingot",
+    "count": 9
+  }
+}

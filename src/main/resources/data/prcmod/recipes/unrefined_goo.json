@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "",
+  "ingredients":
+          [
+            {"item": "minecraft:slime_ball"},
+            {"item": "minecraft:bone"}
+          ],
+  "result":
+  {
+    "item": "prcmod:unrefined_goo"
+  }
+}
