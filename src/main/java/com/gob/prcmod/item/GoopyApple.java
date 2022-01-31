@@ -19,7 +19,7 @@ public class GoopyApple extends Item {
     {
         super(new Properties().group(PrcMod.GOO_TAB)
                 .food(new Food.Builder()
-                        .hunger(5).saturation(5)
+                        .hunger(2).saturation(2.4f)
                         .effect(() -> new EffectInstance(Effects.JUMP_BOOST, 300,3),1)
                         .effect(() -> new EffectInstance(Effects.POISON, 100,1),0.25f)
                         .effect(() -> new EffectInstance(Effects.INSTANT_DAMAGE, 1,100),0.0001f)

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "",
+  "ingredients":
+          [
+            {"item": "prcmod:goo_ingot"},
+            {"item": "minecraft:egg"}
+          ],
+  "result":
+  {
+    "item": "prcmod:goo_seed"
+  }
+}

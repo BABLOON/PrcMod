@@ -1,6 +1,8 @@
 package com.gob.prcmod.item;
 
 import com.gob.prcmod.PrcMod;
+import com.gob.prcmod.block.ModBlocks;
+import com.gob.prcmod.block.ModFluids;
 import com.gob.prcmod.util.Registration;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
@@ -26,6 +28,15 @@ public class ModItems
             = Registration.ITEMS.register("goopy_apple",
             () -> new GoopyApple());
 
+    public static final RegistryObject<Item> GOOD_FOOD
+            = Registration.ITEMS.register("goo-d_food",
+            () -> new GoodFood());
+
+    public static final RegistryObject<Item> SLUDGE_BUCKET
+            = Registration.ITEMS.register("sludge_bucket",
+            () -> new BucketItem(ModFluids.SLUDGE_FLUID::get,
+                    new Item.Properties().group(PrcMod.GOO_TAB)));
+
     public static final RegistryObject<Item> NORMAL_PILLS = Registration.ITEMS.register("normal_pills",
             () -> new NormalPills(new Item.Properties().group(PrcMod.GOO_TAB)
                     .food(new Food.Builder().hunger(0).saturation(0.1f)
@@ -33,6 +44,9 @@ public class ModItems
                             .effect(() -> new EffectInstance(Effects.SPEED, 300,0),1)
                             .setAlwaysEdible()
                             .build()).maxDamage(30)));
+
+    public static final RegistryObject<Item> GOO_SEED = Registration.ITEMS.register("goo_seed",
+            () -> new BlockItem(ModBlocks.GROP_CROP.get(), new Item.Properties().group(PrcMod.GOO_TAB)));
 
     //=========================TOOLS=========================
     public static final RegistryObject<Item> GOO_SHOVEL

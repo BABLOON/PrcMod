@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "prcmod:sludge_flowing",
+    "prcmod:sludge_fluid"
+  ]
+}

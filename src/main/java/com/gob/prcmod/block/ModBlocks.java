@@ -34,6 +34,10 @@ public class ModBlocks
             register("goo_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,
                     AbstractBlock.Properties.create(Material.ORGANIC)));
 
+    public static final RegistryObject<Block> GROP_CROP =
+            Registration.BLOCKS.register("grop_crop",
+                    () -> new GropCrop(AbstractBlock.Properties.from(Blocks.WHEAT)));
+
 
 
     public static void register() {}

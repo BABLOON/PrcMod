@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "prcmod:block/grop_stage_1"
+  }
+}

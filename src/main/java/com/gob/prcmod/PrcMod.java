@@ -1,12 +1,15 @@
 package com.gob.prcmod;
 
 import com.gob.prcmod.block.ModBlocks;
+import com.gob.prcmod.block.ModFluids;
 import com.gob.prcmod.events.ModEvents;
 import com.gob.prcmod.item.ModItems;
 import com.gob.prcmod.util.Config;
 import com.gob.prcmod.util.Registration;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -52,6 +55,7 @@ public class PrcMod
         Registration.register();
         ModItems.register();
         ModBlocks.register();
+        ModFluids.register();
 
         MinecraftForge.EVENT_BUS.register(new ModEvents());
 
@@ -79,8 +83,7 @@ public class PrcMod
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+        RenderTypeLookup.setRenderLayer(ModBlocks.GROP_CROP.get(), RenderType.getCutout());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
