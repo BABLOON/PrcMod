@@ -20,11 +20,15 @@ public class Registration
     public static final DeferredRegister<Fluid> FLUIDS
             = DeferredRegister.create(ForgeRegistries.FLUIDS, PrcMod.MOD_ID);
 
+    public static final DeferredRegister<?> TILE_ENTITY_TYPES
+            = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, PrcMod.MOD_ID);
+
     public static void init()
     {
         IEventBus eventbus = FMLJavaModLoadingContext.get().getModEventBus();
         BLOCKS.register(eventbus);
         ITEMS.register(eventbus);
         FLUIDS.register(eventbus);
+        TILE_ENTITY_TYPES.register(eventbus);
     }
 }

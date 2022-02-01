@@ -20,7 +20,7 @@ public class ModBlocks
                     .sound(SoundType.SLIME)
                     .harvestTool(ToolType.SHOVEL)
                     .harvestLevel(1)
-                    .func_235861_h_()));
+                    .setRequiresTool()));
 
     public static final RegistryObject<Block> GOO_ORE = register("goo_ore",
             () -> new Block(AbstractBlock.Properties.create(Material.ROCK)
@@ -28,7 +28,7 @@ public class ModBlocks
                     .sound(SoundType.STONE)
                     .harvestLevel(2)
                     .harvestTool(ToolType.PICKAXE)
-                    .func_235861_h_()));
+                    .setRequiresTool()));
 
     public static final RegistryObject<Block> GOO_PRESSURE_PLATE =
             register("goo_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,

@@ -246,9 +246,10 @@ public class ModItems
         }
 
         @Override
-        public float func_230304_f_() {             //knock-back resistance
+        public float getKnockbackResistance() {
             return knockbackResistance;
         }
+
     }
 
 
