@@ -38,6 +38,11 @@ public class ModBlocks
             Registration.BLOCKS.register("grop_crop",
                     () -> new GropCrop(AbstractBlock.Properties.from(Blocks.WHEAT)));
 
+    public static final RegistryObject<Block> GOOM =
+            register("goom", () -> new Goom(AbstractBlock.Properties.create(Material.CLAY)
+                    .hardnessAndResistance(2f)
+                    .harvestTool(ToolType.PICKAXE)));
+
 
 
     public static void register() {}

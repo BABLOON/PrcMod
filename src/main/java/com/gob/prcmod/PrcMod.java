@@ -4,6 +4,9 @@ import com.gob.prcmod.block.ModBlocks;
 import com.gob.prcmod.block.ModFluids;
 import com.gob.prcmod.events.ModEvents;
 import com.gob.prcmod.item.ModItems;
+import com.gob.prcmod.setup.ClientProxy;
+import com.gob.prcmod.setup.IProxy;
+import com.gob.prcmod.setup.ServerProxy;
 import com.gob.prcmod.util.Config;
 import com.gob.prcmod.util.Registration;
 import net.minecraft.block.Block;
@@ -15,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -45,60 +49,60 @@ public class PrcMod
         }
     };
 
+    public static IProxy proxy;
+
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
     public PrcMod() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_CONFIG);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
 
-        Registration.register();
-        ModItems.register();
-        ModBlocks.register();
-        ModFluids.register();
+        proxy = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> ServerProxy::new);
 
-        MinecraftForge.EVENT_BUS.register(new ModEvents());
-
-        // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
-        Config.LoadConfigFile(Config.CLIENT_CONFIG, FMLPaths.CONFIGDIR.get().resolve("prcmod-client.toml").toString());
-        Config.LoadConfigFile(Config.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("prcmod-server.toml").toString());
+        registerModAdditions();
 
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    registerConfigs();
+
+    proxy.init();
+
+    loadConfigs();
     }
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(ModBlocks.GROP_CROP.get(), RenderType.getCutout());
+
+    private void registerConfigs() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-        // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+    private void loadConfigs() {
+        Config.LoadConfigFile(Config.CLIENT_CONFIG, FMLPaths.CONFIGDIR.get().resolve("prcmod-client.toml").toString());
+        Config.LoadConfigFile(Config.SERVER_CONFIG, FMLPaths.CONFIGDIR.get().resolve("prcmod-server.toml").toString());
     }
 
-    private void processIMC(final InterModProcessEvent event)
-    {
-        // some example code to receive and process InterModComms from other mods
-        LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m->m.getMessageSupplier().get()).
-                collect(Collectors.toList()));
+    private void registerModAdditions() {
+        // Inits addition registration
+        Registration.init();
+        // registers mod items
+        ModItems.register();
+        // registers mod blocks
+        ModBlocks.register();
+        // register mod fluids ;^)
+        ModFluids.register();
+
+
+        // registers mod events
+        MinecraftForge.EVENT_BUS.register(new ModEvents());
     }
+
+
+
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "mccourse:block/goom"},
+    "facing=south": {"model": "mccourse:block/goom", "y": 180},
+    "facing=east": {"model": "mccourse:block/goom", "y": 90},
+    "facing=west": {"model": "mccourse:block/goom","y": 270}
+  }
+}
