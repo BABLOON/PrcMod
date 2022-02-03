@@ -2,6 +2,7 @@ package com.gob.prcmod;
 
 import com.gob.prcmod.block.ModBlocks;
 import com.gob.prcmod.block.ModFluids;
+import com.gob.prcmod.container.ModContainers;
 import com.gob.prcmod.events.ModEvents;
 import com.gob.prcmod.item.ModItems;
 import com.gob.prcmod.setup.ClientProxy;
@@ -88,6 +89,8 @@ public class PrcMod
         ModFluids.register();
         // register mod tile entities
         ModTileEntities.register();
+        // register mod containers
+        ModContainers.register();
 
         // registers mod events
         MinecraftForge.EVENT_BUS.register(new ModEvents());

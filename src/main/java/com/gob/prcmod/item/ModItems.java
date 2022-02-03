@@ -35,7 +35,8 @@ public class ModItems
     public static final RegistryObject<Item> SLUDGE_BUCKET
             = Registration.ITEMS.register("sludge_bucket",
             () -> new BucketItem(ModFluids.SLUDGE_FLUID::get,
-                    new Item.Properties().group(PrcMod.GOO_TAB)));
+                    new Item.Properties().group(PrcMod.GOO_TAB)
+                            .maxStackSize(1)));
 
     public static final RegistryObject<Item> NORMAL_PILLS = Registration.ITEMS.register("normal_pills",
             () -> new NormalPills(new Item.Properties().group(PrcMod.GOO_TAB)
